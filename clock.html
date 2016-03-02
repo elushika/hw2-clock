@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/p5.min.js">
+</script>
+
+    
+    <script>
+
+//variables
+var xvalue;
+var yvalue;
+var angle;
+
+function setup() {
+
+  // create full-screen canvas
+  createCanvas(windowWidth, windowHeight);
+  //change the mode to degress
+  angleMode(DEGREES); 
+}
+
+function draw() {
+  background(0);
+
+    //location of square
+    //map value
+    angle = frameCount - map(0, 0, width, 180, 180);
+  
+    //Rotation around the dot
+    //100 space between shapes
+    xvalue = 100 * cos(angle);
+    yvalue = 100 * sin(angle);
+  
+    textFont('Courier');
+    textSize(30);
+    textAlign(CENTER);
+
+  //hours
+  translate(width/4, height/2);
+    push();
+    //center
+    ellipse(0, 0, 20, 20);
+    rect(xvalue, yvalue, hour(), hour());
+    
+    fill('white');
+    noStroke();
+    //hours title
+    text('Hours', 0, -300);
+    //hour counter
+    text(hour(), 0, 300)
+  pop();
+  
+  
+ //minutes
+ translate(width/4, 0);
+    push();
+    fill('yellow');
+    noStroke();
+
+    ellipse(0, 0, 20, 20);
+    rect(xvalue, yvalue, minute(), minute());
+    
+    fill('white');
+    noStroke();
+    //minute title
+    text('Minutes', 0, -300);
+    //minute counter
+    text(minute(), 0, 300)
+
+  pop();
+
+  //seconds
+  translate(width/4, 0);
+  push();
+
+    fill('red');
+    noStroke();
+    ellipse(0, 0, 20, 20);
+
+    rect(xvalue, yvalue, second(), second());
+    
+  
+    fill('white');
+    noStroke();
+    //seconds title
+    text('Seconds', 0, -300);
+    //second counter
+    text(second(), 0, 300)
+
+  pop();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+
+</script>
+    
+</body>
+</html>
